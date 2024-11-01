@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* style.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.slider-container {
+    width: 300px;
+    text-align: center;
+}
+
+/* Menu de formulários */
+.form-menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.form-menu button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-menu button:hover {
+    background-color: #0056b3;
+}
+
+.form-slide {
+    display: none; /* Ocultar todos os slides inicialmente */
+}
+
+.form-slide.active {
+    display: block; /* Exibir apenas o slide ativo */
+}
+
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <!-- Menu de seleção de formulário -->
+        <div class="form-menu">
+            <button data-index="0">Formulário 1</button>
+            <button data-index="1">Formulário 2</button>
+            <button data-index="2">Formulário 3</button>
+        </div>
+    
+        <!-- Formulários como slides -->
+        <div id="form1" class="form-slide active">
+            <h2>Formulário 1</h2>
+            <form>
+                <input type="text" placeholder="Nome">
+                <input type="email" placeholder="Email">
+            </form>
+        </div>
+    
+        <div id="form2" class="form-slide">
+            <h2>Formulário 2</h2>
+            <form>
+                <input type="text" placeholder="Endereço">
+                <input type="tel" placeholder="Telefone">
+            </form>
+        </div>
+    
+        <div id="form3" class="form-slide">
+            <h2>Formulário 3</h2>
+            <form>
+                <input type="password" placeholder="Senha">
+                <input type="password" placeholder="Confirme a Senha">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // script.js
+
+// Seleciona todos os botões do menu e os slides de formulário
+const formButtons = document.querySelectorAll('.form-menu button');
+const slides = document.querySelectorAll('.form-slide');
+
+// Função para atualizar o slide ativo com base no índice do botão clicado
+function selecionarSlide(index) {
+    slides.forEach((slide) => slide.classList.remove('active')); // Remove a classe 'active' de todos os slides
+    slides[index].classList.add('active'); // Adiciona a classe 'active' ao slide correspondente
+}
+
+// Adiciona evento de clique a cada botão do menu para alternar o slide
+formButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        selecionarSlide(index);
+    });
+});
+
+    </script>
+</body>
+</html>
